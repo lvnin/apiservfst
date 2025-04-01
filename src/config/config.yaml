@@ -1,0 +1,72 @@
+app:
+  host: 0.0.0.0
+  port: 8888
+  cors: true
+  prefix: api
+  locale: zh_CN
+
+log:
+  levels:
+    - debug
+    - log
+    - warn
+    - error
+    - fatal
+
+jwt:
+  secret: _5#y2LF4Q8nxzec]/
+  expiresin: 7d
+  bufferTime: 1d
+  issuer: apiPlus
+
+captcha:
+  expiresin: 600000
+
+db:
+  synchronize: true
+  logging: true
+  sourcefile: 'data-source.sql'
+  conns:
+    - name: default
+      type: 'mysql'
+      host: 127.0.0.1
+      port: 3306
+      username: root
+      password: your-default-password
+      database: your-default-database
+      dateStrings: true
+      entities:
+        - scripts/account/model/*.model{.ts,.js}
+
+sdk:
+  sms:
+    accessKeyId: your-access-key-id
+    accessKeySecret: your-access-key-secret
+    endpoint: your-endpoiint
+    apiVersion: your-api-version
+    signName: your-sign-name
+    templateCode: your-template-code
+
+  idenauth:
+    authUrl: your-auth-url
+    appKey: your-app-key
+    appSecret: your-app-secret
+    appCode: your-app-code
+
+  push:
+    appKey: your-app-key
+    masterSecret: your-master-secret
+    isDebug: true
+
+microservices:
+  - name: your-tcp-microservice-name
+    disabled: true
+    transport: tcp
+    host: your-host
+    port: your-port
+  - name: your-grpc-microservice-name
+    disabled: true
+    transport: grpc
+    protos:
+      - your-proto-path-file
+    url: your-host:your-port
